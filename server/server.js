@@ -1,5 +1,4 @@
-﻿import dns from "node:dns";
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+﻿
 
 import express from "express";
 import cors from "cors";
@@ -13,12 +12,16 @@ dotenv.config();
 
 const app = express();
 
+
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "http://localhost:5174"
+    "http://localhost:5174",
+    "https://saume-store.vercel.app",
+    "https://saume-store-i5wwq2nha-saumyadas2203-1567.vercel.app"
   ]
 }));
+
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => {
