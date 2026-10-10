@@ -1,53 +1,82 @@
-# Mini MERN E-commerce Store
+# SAUMÉ Store 🛍️
 
-A beginner-friendly MERN shopping app with:
-- React + Vite frontend
-- Node.js + Express REST API
-- MongoDB + Mongoose product storage
-- Search, category filters, add-to-cart, quantity updates, remove item, cart total
-- Seed route to add sample products
+A full-stack MERN e-commerce web application featuring user authentication, product browsing, wishlist functionality, and an admin dashboard.
 
-## Requirements
-- Node.js (LTS)
-- MongoDB running locally OR a MongoDB Atlas connection string
+## ✨ Features
 
-## 1. Configure the backend
-Open a terminal in `server`:
+- User registration and login
+- Product browsing
+- Wishlist functionality
+- Admin dashboard
+- Authentication and protected routes
+- Responsive user interface
+
+## 🧰 Tech Stack
+
+- **Frontend:** React, Vite, CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, Mongoose
+- **Authentication:** JSON Web Tokens (JWT)
+
+## 📁 Project Structure
+
+```text
+saume-store/
+├── client/
+├── server/
+├── .gitignore
+└── README.md
+```
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js and npm
+- MongoDB database
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/saumyadas2203/saume-store.git
+cd saume-store
+```
+
+### 2. Set up the backend
+
+```bash
+cd server
 npm install
 ```
 
-Copy `.env.example` to `.env`, then set `MONGO_URI`.
-For local MongoDB, the default URI is:
-`mongodb://127.0.0.1:27017/mini_mern_store`
+Create a `server/.env` file using `server/.env.example` as a reference. Add your own environment variables and keep credentials private.
 
-Start backend:
-```bash
-npm run dev
-```
-Backend runs at `http://localhost:5000`.
+Start the backend using the command defined in `server/package.json`.
 
-Add sample products by opening this URL once:
-`http://localhost:5000/api/products/seed`
-This is a demo seed endpoint; remove/disable it before deploying publicly.
+### 3. Set up the frontend
 
-## 2. Start the frontend
-Open a second terminal in `client`:
+Open another terminal:
 
 ```bash
+cd client
 npm install
 npm run dev
 ```
 
-Open the local URL shown by Vite (usually `http://localhost:5173`).
+Open the local URL shown by Vite.
 
-## API routes
-- `GET /api/health` — API health check
-- `GET /api/products` — list products (optional `?search=...&category=...`)
-- `GET /api/products/:id` — get one product
-- `POST /api/products` — create product (demo API; add validation/auth before production)
-- `POST /api/products/seed` — insert demo products if database is empty
+## 🔒 Security
 
-## Important
-This is a learning project, not a production checkout system. It does not process real payments or place real orders. Before production, add authentication, server-side validation, admin authorization, secure checkout/payment integration, rate limiting, and deployment configuration.
+- Never commit `.env` files.
+- Never publish database passwords or JWT secrets.
+- Validate and authorize protected backend routes.
+
+## 👩‍💻 Author
+
+**Saumya Das**
+
+GitHub: [saumyadas2203](https://github.com/saumyadas2203)
+
+---
+
+⭐ If you like this project, consider giving it a star!
