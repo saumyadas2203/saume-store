@@ -2,7 +2,9 @@
 import { useState } from "react";
 import "./Auth.css";
 
-const API = "http://localhost:5000/api/auth";
+
+const API = `${import.meta.env.VITE_API_URL}/auth`;
+
 
 export default function Auth({ onSuccess }) {
   const [isSignup, setIsSignup] = useState(false);
