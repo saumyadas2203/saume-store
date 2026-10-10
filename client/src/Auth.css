@@ -1,0 +1,888 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+:root {
+  --bg: #100d14;
+  --panel: #17121d;
+  --purple: #bd91f0;
+  --purple-light: #d0b1ff;
+  --text: #f8f3ff;
+  --muted: #a99bbd;
+  --border: rgba(214, 190, 245, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.auth-page {
+  min-height: 100vh;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 15%, #39233f 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 85%, #21142e 0%, transparent 35%),
+    var(--bg);
+}
+
+.auth-layout {
+  width: min(1140px, 100%);
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: rgba(23, 18, 29, 0.96);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+}
+
+/* LEFT PANEL */
+
+.auth-art {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: 650px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+  background:
+    radial-gradient(
+      ellipse at 50% 38%,
+      rgba(100, 55, 125, 0.42),
+      transparent 62%
+    ),
+    linear-gradient(145deg, #2c2035, #17121d 85%);
+}
+
+.art-top {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--purple-light);
+  background: #30203f;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.art-label,
+.eyebrow {
+  color: var(--purple-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* LARGE SHOPPING IMAGE */
+
+.landscape {
+  position: absolute;
+  z-index: 1;
+  inset: 48px 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shopping-girl {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  border: 0;
+  border-radius: 0;
+  opacity: 0.98;
+  mix-blend-mode: screen;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 78% 76% at 50% 45%,
+    #000 38%,
+    rgba(0, 0, 0, 0.92) 57%,
+    rgba(0, 0, 0, 0.48) 76%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    ellipse 78% 76% at 50% 45%,
+    #000 38%,
+    rgba(0, 0, 0, 0.92) 57%,
+    rgba(0, 0, 0, 0.48) 76%,
+    transparent 100%
+  );
+}
+
+.girl-glow {
+  position: absolute;
+  width: 85%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(173, 112, 220, 0.2),
+    transparent 70%
+  );
+  filter: blur(35px);
+}
+
+.girl-sparkle {
+  position: absolute;
+  z-index: 2;
+  color: var(--purple-light);
+  pointer-events: none;
+}
+
+.sparkle-one {
+  top: 25%;
+  left: 22%;
+  font-size: 22px;
+}
+
+.sparkle-two {
+  top: 32%;
+  right: 18%;
+  font-size: 26px;
+}
+
+.sparkle-three {
+  top: 52%;
+  left: 17%;
+  font-size: 15px;
+}
+
+.landscape-orb,
+.landscape-dune,
+.landscape-stars {
+  display: none;
+}
+
+/* LEFT SIDE TEXT */
+
+.art-caption {
+  position: relative;
+  z-index: 4;
+  margin-top: auto;
+  padding-top: 330px;
+}
+
+.art-caption .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.art-caption h2 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 4vw, 48px);
+  line-height: 1.13;
+  letter-spacing: -1.8px;
+}
+
+.art-caption h2 em {
+  color: var(--purple);
+  font-weight: 500;
+}
+
+.art-caption p {
+  margin: 18px 0 0;
+  color: #c4b5d8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.art-footer {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 42px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  color: #a99ac0;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+
+/* RIGHT LOGIN PANEL */
+
+.auth-form-panel {
+  min-width: 0;
+  padding: 65px 62px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(145deg, #19141f, #130f18);
+}
+
+.mobile-brand {
+  display: none;
+}
+
+.form-heading {
+  margin-bottom: 42px;
+}
+
+.form-heading .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.form-heading h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+}
+
+.form-heading p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.store-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.store-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #eee5f8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.store-form input {
+  width: 100%;
+  height: 51px;
+  padding: 0 16px;
+  outline: none;
+  border: 1px solid rgba(207, 181, 237, 0.16);
+  border-radius: 9px;
+  color: var(--text);
+  background: #241d2c;
+  font: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.store-form input::placeholder {
+  color: #92829f;
+}
+
+.store-form input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(189, 145, 240, 0.1);
+}
+
+.auth-error {
+  margin: -8px 0 0;
+  color: #ff9dba;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.auth-submit {
+  width: 100%;
+  min-height: 51px;
+  margin-top: 3px;
+  border: 1px solid #c49bea;
+  border-radius: 9px;
+  color: #17101f;
+  background: linear-gradient(100deg, #a36bd0, #c09ae9);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.auth-submit:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.auth-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+.form-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 27px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.form-switch button {
+  padding: 3px 0;
+  border: 0;
+  color: var(--purple-light);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-switch button:hover {
+  color: #fff;
+}
+
+.form-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+  color: #88769e;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.form-bottom span {
+  color: var(--purple-light);
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .auth-page {
+    padding: 24px;
+  }
+
+  .auth-layout {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .auth-art {
+    padding: 26px;
+  }
+
+  .auth-form-panel {
+    padding: 50px 36px 28px;
+  }
+
+  .art-caption h2 {
+    font-size: 38px;
+  }
+
+  .shopping-girl {
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .auth-page {
+    min-height: 100vh;
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  .auth-layout {
+    width: 100%;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    border-radius: 17px;
+  }
+
+  .auth-art {
+    min-height: 420px;
+    padding: 22px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .landscape {
+    inset: 45px 0 70px;
+  }
+
+  .shopping-girl {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .art-caption {
+    margin-top: auto;
+    padding-top: 285px;
+  }
+
+  .art-caption .eyebrow {
+    margin-bottom: 10px;
+    font-size: 8px;
+  }
+
+  .art-caption h2 {
+    font-size: 32px;
+  }
+
+  .art-caption p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .art-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    font-size: 8px;
+  }
+
+  .auth-form-panel {
+    padding: 35px 24px 28px;
+  }
+
+  .form-heading {
+    margin-bottom: 30px;
+  }
+
+  .form-heading h1 {
+    font-size: 29px;
+  }
+
+  .store-form {
+    gap: 19px;
+  }
+
+  .form-bottom {
+    margin-top: 34px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+  .auth-page {
+    padding: 10px;
+  }
+
+  .auth-art {
+    min-height: 390px;
+    padding: 18px;
+  }
+
+  .art-caption {
+    padding-top: 260px;
+  }
+
+  .auth-form-panel {
+    padding: 30px 18px 24px;
+  }
+
+  .form-heading h1 {
+    font-size: 26px;
+  }
+}
+
+
+
+/* FIX: keep image and text separate */
+.auth-art {
+  isolation: isolate;
+}
+
+.landscape {
+  inset: 65px 0 235px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.shopping-girl {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  animation: girlFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Caption stays clearly below the image */
+.art-caption {
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  padding-top: 0;
+}
+
+.art-caption .eyebrow {
+  display: block;
+  position: relative;
+  z-index: 6;
+  margin-bottom: 14px;
+  line-height: 1.6;
+  text-shadow: 0 2px 12px #17101f;
+}
+
+.art-caption h2 {
+  position: relative;
+  z-index: 6;
+  line-height: 1.12;
+  text-shadow: 0 3px 18px rgba(16, 10, 22, 0.5);
+}
+
+.art-caption p {
+  position: relative;
+  z-index: 6;
+}
+
+.art-footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* Gentle animated purple glow */
+.girl-glow {
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes girlFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .landscape {
+    inset: 55px 0 220px;
+  }
+
+  .art-caption {
+    padding-top: 0;
+  }
+
+  .shopping-girl {
+    object-fit: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shopping-girl,
+  .girl-glow {
+    animation: none;
+  }
+}
+
+
+/* ===== AESTHETIC SHOPPING IMAGE ===== */
+
+.auth-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 38%,
+      rgba(115, 69, 143, 0.32) 0%,
+      rgba(55, 35, 67, 0.22) 38%,
+      transparent 70%
+    ),
+    linear-gradient(160deg, #281d31 0%, #19131f 65%, #130f18 100%);
+}
+
+.landscape {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 230px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hide the rectangular edges by fading them into the panel */
+.shopping-girl {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  border: 0;
+  border-radius: 0;
+  opacity: 0.96;
+  mix-blend-mode: screen;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 72% at 50% 48%,
+    #000 25%,
+    rgba(0, 0, 0, 0.95) 42%,
+    rgba(0, 0, 0, 0.65) 58%,
+    rgba(0, 0, 0, 0.2) 76%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    ellipse 72% 72% at 50% 48%,
+    #000 25%,
+    rgba(0, 0, 0, 0.95) 42%,
+    rgba(0, 0, 0, 0.65) 58%,
+    rgba(0, 0, 0, 0.2) 76%,
+    transparent 100%
+  );
+
+  animation: aestheticFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Soft glow behind the model */
+.girl-glow {
+  position: absolute;
+  width: 75%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(184, 126, 229, 0.25),
+    rgba(122, 72, 155, 0.1) 42%,
+    transparent 72%
+  );
+  filter: blur(35px);
+  animation: softGlow 5s ease-in-out infinite alternate;
+}
+
+.girl-sparkle {
+  z-index: 2;
+  color: #d8b7ff;
+  text-shadow: 0 0 16px rgba(202, 157, 255, 0.8);
+  animation: sparkleFloat 3.5s ease-in-out infinite;
+}
+
+.sparkle-one {
+  top: 22%;
+  left: 18%;
+}
+
+.sparkle-two {
+  top: 35%;
+  right: 16%;
+  animation-delay: 1s;
+}
+
+.sparkle-three {
+  top: 54%;
+  left: 15%;
+  animation-delay: 1.7s;
+}
+
+/* Keep the heading readable */
+.art-caption {
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  padding-top: 0;
+}
+
+.art-caption .eyebrow {
+  position: relative;
+  z-index: 6;
+  display: block;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  text-shadow: 0 2px 12px #19121f;
+}
+
+.art-caption h2 {
+  position: relative;
+  z-index: 6;
+  line-height: 1.12;
+  text-shadow: 0 4px 18px rgba(15, 10, 20, 0.5);
+}
+
+.art-caption p {
+  position: relative;
+  z-index: 6;
+}
+
+.art-footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* Subtle animation */
+@keyframes aestheticFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes softGlow {
+  from {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .landscape {
+    bottom: 235px;
+  }
+}
+
+@media (max-width: 700px) {
+  .landscape {
+    top: 55px;
+    bottom: 220px;
+  }
+
+  .shopping-girl {
+    object-fit: contain;
+  }
+
+  .art-caption {
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shopping-girl,
+  .girl-glow,
+  .girl-sparkle {
+    animation: none;
+  }
+}
+
+
+/* Remove visible image edges */
+.landscape {
+  overflow: hidden;
+  background: transparent;
+}
+
+.shopping-girl {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 82% at center,
+    #000 20%,
+    rgba(0, 0, 0, 0.95) 40%,
+    rgba(0, 0, 0, 0.65) 58%,
+    rgba(0, 0, 0, 0.25) 76%,
+    transparent 100%
+  );
+
+  mask-image: radial-gradient(
+    ellipse 85% 82% at center,
+    #000 20%,
+    rgba(0, 0, 0, 0.95) 40%,
+    rgba(0, 0, 0, 0.65) 58%,
+    rgba(0, 0, 0, 0.25) 76%,
+    transparent 100%
+  );
+}
+
+
+/* Blend image edges into the purple background */
+.auth-art {
+  background: #19121f !important;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.landscape {
+  background: transparent !important;
+  overflow: hidden;
+}
+
+.shopping-girl {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(
+    ellipse 68% 70% at 50% 45%,
+    #000 20%,
+    rgba(0, 0, 0, 0.95) 38%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.25) 72%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 68% 70% at 50% 45%,
+    #000 20%,
+    rgba(0, 0, 0, 0.95) 38%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.25) 72%,
+    transparent 100%
+  );
+}
