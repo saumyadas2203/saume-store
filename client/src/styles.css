@@ -1495,3 +1495,385 @@ select:focus-visible {
     flex-wrap: wrap;
   }
 }
+
+
+
+/* MOBILE HEADER & NAVBAR FIX */
+@media (max-width: 700px) {
+  .top-strip-inner {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 7px 0;
+  }
+
+  .header-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .header-main > .brand {
+    min-width: 0;
+    font-size: 21px;
+  }
+
+  .header-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    order: initial;
+  }
+
+  .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .cart-button {
+    white-space: nowrap;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .main-nav {
+    width: 100%;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-menu {
+    flex: 0 0 auto;
+    min-width: 140px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    min-height: 45px;
+    padding: 0 12px;
+    white-space: nowrap;
+  }
+
+  .nav-promo {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-main > .brand {
+    font-size: 18px;
+    gap: 6px;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .cart-button {
+    padding: 8px;
+  }
+}
+
+
+
+/* SAUME MOBILE HEADER - FINAL FIX */
+@media (max-width: 700px) {
+  .page-container {
+    width: calc(100% - 24px);
+  }
+
+  .top-strip-inner {
+    padding: 8px 0;
+    gap: 8px;
+  }
+
+  .top-strip-inner > span {
+    max-width: 100%;
+  }
+
+  .header-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px 10px;
+    padding: 14px 0;
+  }
+
+  .header-main > .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    font-size: clamp(17px, 5vw, 22px);
+    gap: 7px;
+    letter-spacing: -0.6px;
+  }
+
+  .brand-mark {
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+  }
+
+  .header-search {
+    grid-column: 2;
+    grid-row: 1;
+    width: min(42vw, 190px);
+    min-width: 0;
+    padding: 0 8px;
+    gap: 5px;
+  }
+
+  .header-search input {
+    width: 100%;
+    min-width: 0;
+    font-size: 11px;
+  }
+
+  .header-search button {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+  }
+
+  .header-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 3px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-actions > * {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .account-link {
+    padding: 8px;
+  }
+
+  .cart-button {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .main-nav {
+    width: 100%;
+  }
+
+  .nav-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    min-height: 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-menu {
+    flex: 0 0 155px;
+    min-width: 155px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 0 13px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .nav-promo {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-main {
+    gap: 12px 7px;
+  }
+
+  .header-main > .brand {
+    font-size: 16px;
+    gap: 5px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .header-search {
+    width: 40vw;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .cart-button {
+    padding: 8px 10px;
+  }
+
+  .category-menu {
+    flex-basis: 140px;
+    min-width: 140px;
+  }
+}
+
+
+
+/* FINAL HEADER FIX — MOBILE */
+@media (max-width: 700px) {
+  .header-main {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center;
+    gap: 12px 8px !important;
+    padding: 14px 0 !important;
+  }
+
+  .header-main > .brand {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: clamp(16px, 4.5vw, 21px);
+    gap: 6px;
+  }
+
+  .header-main > .header-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    order: initial;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header-main > .header-actions {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 4px !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-actions > * {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .header-actions .account-link {
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+
+  .header-actions .account-link span {
+    display: inline;
+  }
+
+  .header-actions .cart-button {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+
+  .main-nav .nav-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0;
+  }
+
+  .main-nav .category-menu {
+    flex: 0 0 145px;
+    min-width: 145px;
+  }
+
+  .main-nav .nav-links {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .main-nav .nav-links a {
+    flex: 0 0 auto;
+    padding: 0 12px;
+    white-space: nowrap;
+  }
+
+  .main-nav .nav-promo {
+    display: none;
+  }
+}
+
