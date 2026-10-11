@@ -22,7 +22,7 @@ import "./styles.css";
 import Auth from "./Auth.jsx";
 import AdminDashboard from "./AdminDashboard.jsx";
 
-const API = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL;
 
 const money = (value) =>
   new Intl.NumberFormat("en-IN", {
