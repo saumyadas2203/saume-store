@@ -154,10 +154,8 @@ export default function App() {
     return () => controller.abort();
   }, [search, category, auth.token]);
 
-  const categories = useMemo(
-    () => ["All", ...new Set(products.map((p) => p.category))],
-    [products]
-  );
+const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
+
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const total = cart.reduce(
