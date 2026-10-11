@@ -7,13 +7,31 @@ import authMiddleware, {
 
 const router = express.Router();
 
-// Get all products
+// Get all products with category filter
 router.get("/", async (req, res) => {
   try {
-    const products = await Product.find().sort({ createdAt: -1 });
+    const { category } = req.query;
+
+    const filter = {};
+
+    if (category && category.toLowerCase() !== "all") {
+      filter.category = {
+        $regex: `^${category}$`,
+        $options: "i",
+      };
+    }
+
+    const products = await Product.find(filter).sort({
+      createdAt: -1,
+    });
+
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch products" });
+    console.error("Fetch products error:", error);
+
+    res.status(500).json({
+      message: "Failed to fetch products",
+    });
   }
 });
 
@@ -23,20 +41,31 @@ router.get("/:id", async (req, res) => {
     const product = await Product.findById(req.params.id);
 
     if (!product) {
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({
+        message: "Product not found",
+      });
     }
 
     res.json(product);
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch product" });
+    res.status(500).json({
+      message: "Failed to fetch product",
+    });
   }
 });
 
 // Add product — admin only
 router.post("/", authMiddleware, adminMiddleware, async (req, res) => {
   try {
-    const { name, description, price, category, image, rating, stock } =
-      req.body;
+    const {
+      name,
+      description,
+      price,
+      category,
+      image,
+      rating,
+      stock,
+    } = req.body;
 
     if (!name || price === undefined || !category || !image) {
       return res.status(400).json({
@@ -50,8 +79,12 @@ router.post("/", authMiddleware, adminMiddleware, async (req, res) => {
       price: Number(price),
       category,
       image,
-      ...(rating !== undefined && { rating: Number(rating) }),
-      ...(stock !== undefined && { stock: Number(stock) }),
+      ...(rating !== undefined && {
+        rating: Number(rating),
+      }),
+      ...(stock !== undefined && {
+        stock: Number(stock),
+      }),
     });
 
     res.status(201).json({
