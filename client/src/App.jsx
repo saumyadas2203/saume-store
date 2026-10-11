@@ -61,6 +61,18 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutMessage, setCheckoutMessage] = useState("");
+  const [orderConfirmation, setOrderConfirmation] = useState("");
+  const [shippingAddress, setShippingAddress] = useState({
+    fullName: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    pincode: "",
+  });
 
   function handleAuthSuccess(data) {
     localStorage.setItem("token", data.token);
@@ -248,6 +260,80 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
     setCart((current) => current.filter((item) => item._id !== id));
   }
 
+  function updateShippingAddress(event) {
+    const { name, value } = event.target;
+    setShippingAddress((current) => ({ ...current, [name]: value }));
+  }
+
+  async function placeCodOrder(event) {
+    event.preventDefault();
+    setCheckoutMessage("");
+    setOrderConfirmation("");
+
+    if (!auth.token) {
+      setCheckoutMessage("Please log in again before placing your order.");
+      return;
+    }
+
+    if (cart.length === 0) {
+      setCheckoutMessage("Your cart is empty.");
+      return;
+    }
+
+    setCheckoutLoading(true);
+    try {
+      const response = await fetch(`${API}/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
+        },
+        body: JSON.stringify({
+          items: cart.map((item) => ({
+            product: item._id,
+            quantity: item.quantity,
+          })),
+          shippingAddress,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data.message || "Could not place your order. Please check your details and try again.");
+      }
+
+      const orderNumber = data.order?._id || data._id || data.orderId;
+      setOrderConfirmation(
+        orderNumber
+          ? `Order placed successfully! Order ID: ${orderNumber}. Payment method: Cash on Delivery.`
+          : "Order placed successfully! Payment method: Cash on Delivery."
+      );
+      setCart([]);
+      setCheckoutOpen(false);
+      setCheckoutMessage("");
+      setShippingAddress({
+        fullName: auth.user?.name || "",
+        phone: "",
+        address: "",
+        city: "",
+        state: "",
+        pincode: "",
+      });
+      setProducts((current) =>
+        current.map((product) => {
+          const orderedItem = cart.find((item) => item._id === product._id);
+          return orderedItem
+            ? { ...product, stock: Math.max(0, Number(product.stock) - orderedItem.quantity) }
+            : product;
+        })
+      );
+    } catch (err) {
+      setCheckoutMessage(err.message || "Something went wrong while placing your order.");
+    } finally {
+      setCheckoutLoading(false);
+    }
+  }
+
   if (!auth.token) {
     return <Auth onSuccess={handleAuthSuccess} />;
   }
@@ -345,6 +431,29 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
       </header>
 
       <main className="page-container">
+        {orderConfirmation && (
+          <div
+            role="status"
+            style={{
+              margin: "18px 0",
+              padding: "14px 16px",
+              borderRadius: "10px",
+              border: "1px solid #a7d7b5",
+              background: "#effaf2",
+              color: "#176b35",
+            }}
+          >
+            <strong>{orderConfirmation}</strong>
+            <button
+              type="button"
+              onClick={() => setOrderConfirmation("")}
+              aria-label="Dismiss order confirmation"
+              style={{ float: "right", border: 0, background: "transparent", cursor: "pointer", color: "inherit" }}
+            >
+              <X size={16} />
+            </button>
+          </div>
+        )}
         <section className="hero-layout">
           <div className="hero-banner">
             <img
@@ -684,15 +793,104 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
                 <div className="cart-summary">
                   <div><span>Subtotal</span><strong>{money(total)}</strong></div>
                   <p>Shipping and taxes calculated at checkout.</p>
-                  <button
-                    className="checkout-button"
-                    onClick={() => window.alert("Demo only — checkout and payments are not connected yet.")}
-                  >
-                    Checkout · {money(total)} <ArrowUpRight size={17} />
-                  </button>
-                  <button className="continue-button" onClick={() => setCartOpen(false)}>
-                    Continue browsing
-                  </button>
+                  {!checkoutOpen ? (
+                    <>
+                      <button
+                        className="checkout-button"
+                        onClick={() => {
+                          setCheckoutMessage("");
+                          setCheckoutOpen(true);
+                          setShippingAddress((current) => ({
+                            ...current,
+                            fullName: current.fullName || auth.user?.name || "",
+                          }));
+                        }}
+                      >
+                        Checkout · {money(total)} <ArrowUpRight size={17} />
+                      </button>
+                      <button className="continue-button" onClick={() => setCartOpen(false)}>
+                        Continue browsing
+                      </button>
+                    </>
+                  ) : (
+                    <form
+                      onSubmit={placeCodOrder}
+                      style={{
+                        marginTop: "18px",
+                        paddingTop: "18px",
+                        borderTop: "1px solid var(--border, #dedbd4)",
+                        display: "grid",
+                        gap: "10px",
+                      }}
+                    >
+                      <div>
+                        <p className="eyebrow">CASH ON DELIVERY</p>
+                        <h3 style={{ margin: "4px 0 6px" }}>Delivery details</h3>
+                        <p style={{ margin: 0, fontSize: "13px" }}>
+                          Pay in cash when your order arrives.
+                        </p>
+                      </div>
+                      {[
+                        ["fullName", "Full name", "text"],
+                        ["phone", "Phone number", "tel"],
+                        ["address", "Full delivery address", "text"],
+                        ["city", "City", "text"],
+                        ["state", "State", "text"],
+                        ["pincode", "PIN code", "text"],
+                      ].map(([name, label, type]) => (
+                        <label key={name} style={{ display: "grid", gap: "5px", fontSize: "13px" }}>
+                          <span>{label}</span>
+                          <input
+                            name={name}
+                            type={type}
+                            value={shippingAddress[name]}
+                            onChange={updateShippingAddress}
+                            required
+                            autoComplete={
+                              name === "fullName" ? "name" :
+                              name === "phone" ? "tel" :
+                              name === "address" ? "street-address" :
+                              name === "city" ? "address-level2" :
+                              name === "state" ? "address-level1" :
+                              "postal-code"
+                            }
+                            maxLength={name === "phone" ? 15 : name === "pincode" ? 10 : 200}
+                            style={{
+                              width: "100%",
+                              boxSizing: "border-box",
+                              padding: "11px 12px",
+                              border: "1px solid var(--border, #dedbd4)",
+                              borderRadius: "8px",
+                              background: "var(--surface, #fff)",
+                              color: "inherit",
+                              font: "inherit",
+                            }}
+                          />
+                        </label>
+                      ))}
+                      {checkoutMessage && (
+                        <p role="alert" style={{ color: "#b42318", fontSize: "13px", margin: "4px 0" }}>
+                          {checkoutMessage}
+                        </p>
+                      )}
+                      <div style={{ display: "flex", gap: "8px" }}>
+                        <button
+                          type="button"
+                          className="continue-button"
+                          onClick={() => {
+                            setCheckoutOpen(false);
+                            setCheckoutMessage("");
+                          }}
+                          disabled={checkoutLoading}
+                        >
+                          Back
+                        </button>
+                        <button type="submit" className="checkout-button" disabled={checkoutLoading}>
+                          {checkoutLoading ? "Placing order…" : `Place COD order · ${money(total)}`}
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </div>
               </>
             )}
