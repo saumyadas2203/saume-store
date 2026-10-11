@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Auth.css";
 
 
-const API = `${import.meta.env.VITE_API_URL}/auth`;
+const API = `${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/$/, "")}/auth`;
 
 
 export default function Auth({ onSuccess }) {
