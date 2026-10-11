@@ -1877,3 +1877,95 @@ select:focus-visible {
   }
 }
 
+
+
+/* ===== MOBILE HEADER + PRODUCT SLIDER FIX ===== */
+
+@media (max-width: 700px) {
+  .header-main {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 12px !important;
+    padding: 16px 0 !important;
+    align-items: center !important;
+  }
+
+  .header-main > .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    font-size: 21px;
+    gap: 8px;
+  }
+
+  .header-main > .header-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-main > .header-search {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: 100%;
+    order: initial !important;
+  }
+
+  .header-actions .account-link {
+    margin-right: auto;
+  }
+
+  .nav-inner {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Swipeable product cards */
+  .product-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 2px 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #dfc078 #171717;
+  }
+
+  .product-grid .product-card {
+    flex: 0 0 72% !important;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .product-image-wrap {
+    height: 190px !important;
+  }
+
+  .product-bottom {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid {
+    grid-template-columns: none !important;
+  }
+
+  .product-grid .product-card {
+    flex-basis: 78% !important;
+  }
+}
+
