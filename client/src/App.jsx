@@ -740,7 +740,10 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
 
       {cartOpen && (
         <div className="drawer-backdrop" onClick={() => setCartOpen(false)}>
-          <aside className="cart-drawer" onClick={(e) => e.stopPropagation()}>
+          <aside
+            className={`cart-drawer${checkoutOpen ? " checkout-active" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="drawer-heading">
               <div>
                 <p className="eyebrow">YOUR LITTLE FINDS</p>
@@ -814,6 +817,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
                     </>
                   ) : (
                     <form
+                      className="checkout-form"
                       onSubmit={placeCodOrder}
                       style={{
                         marginTop: "18px",
