@@ -1,4 +1,4 @@
-﻿
+
 import { useEffect, useMemo, useState } from "react";
 import {
   Search,
@@ -60,7 +60,8 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [subscribeMessage, setSubscribeMessage] = useState("");
+  const [footerInfo, setFooterInfo] = useState("");
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutMessage, setCheckoutMessage] = useState("");
@@ -282,7 +283,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
 
     setCheckoutLoading(true);
     const demoConfirmation =
-      "Order Placed Successfully! (Demo only — no real order was created. Your cart and stock are unchanged.)";
+      "Order Placed Successfully! (Demo only � no real order was created. Your cart and stock are unchanged.)";
     setOrderConfirmation(demoConfirmation);
     window.alert(demoConfirmation);
     setCheckoutOpen(false);
@@ -308,7 +309,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
     <div className="app-shell">
       <div className="top-strip">
         <div className="page-container top-strip-inner">
-          <span>Welcome to SAUMÉ Store — everyday essentials, thoughtfully picked.</span>
+          <span>Welcome to SAUM� Store � everyday essentials, thoughtfully picked.</span>
           <div>
             <a href="#story">About us</a>
             <span className="top-divider">|</span>
@@ -319,9 +320,9 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
 
       <header className="header">
         <div className="page-container header-main">
-          <a className="brand" href="#" aria-label="SAUMÉ Store home">
+          <a className="brand" href="#" aria-label="SAUM� Store home">
             <span className="brand-mark"><ShoppingBag size={22} /></span>
-            <span>SAUMÉ<span className="brand-light">store.</span></span>
+            <span>SAUM�<span className="brand-light">store.</span></span>
           </a>
 
           <div className="header-search search-box">
@@ -464,7 +465,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
           </div>
           <div className="benefit">
             <span className="benefit-icon"><Truck size={23} /></span>
-            <div><b>Free shipping</b><small>On orders over ₹2,000</small></div>
+            <div><b>Free shipping</b><small>On orders over ?2,000</small></div>
           </div>
           <div className="benefit">
             <span className="benefit-icon"><RotateCcw size={22} /></span>
@@ -585,7 +586,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
           )}
 
           {loading ? (
-            <div className="state-message">Finding good things for you…</div>
+            <div className="state-message">Finding good things for you�</div>
           ) : error ? (
             <div className="state-message error">
               {error}<br />
@@ -640,7 +641,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
         </section>
 
         <section className="story-section" id="story">
-          <div className="story-symbol">✳</div>
+          <div className="story-symbol">?</div>
           <p className="eyebrow">A SMALLER, HAPPIER KIND OF SHOPPING</p>
           <h2>Useful things.<br /><em>Thoughtfully picked.</em></h2>
           <p>
@@ -658,38 +659,50 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
           <div className="footer-brand-col">
             <a className="brand" href="#">
               <span className="brand-mark"><ShoppingBag size={20} /></span>
-              <span>SAUMÉ<span className="brand-light">store.</span></span>
+              <span>SAUM�<span className="brand-light">store.</span></span>
             </a>
             <p>Everyday essentials, thoughtfully picked for you.</p>
           </div>
 
-          <div className="footer-col">
-            <b>Quick links</b>
-            <a href="#shop">Shop all</a>
-            <a href="#categories">Categories</a>
-            <a href="#story">Our story</a>
-          </div>
+          
+<div className="footer-col">
+  <b>Quick links</b>
+  <a href="#shop">Shop all</a>
+  <a href="#categories">Categories</a>
+  <a href="#story">Our story</a>
+</div>
 
-          <div className="footer-col">
-            <b>Customer care</b>
-            <a href="#footer">Contact us</a>
-            <a href="#footer">Shipping &amp; returns</a>
-            <a href="#footer">FAQs</a>
-          </div>
+<div className="footer-col">
+  <b>Customer care</b>
+  <a href="#footer" onClick={(e) => { e.preventDefault(); setFooterInfo("Contact us"); }}>Contact us</a>
+  <a href="#footer" onClick={(e) => { e.preventDefault(); setFooterInfo("Shipping & returns"); }}>Shipping &amp; returns</a>
+  <a href="#footer" onClick={(e) => { e.preventDefault(); setFooterInfo("FAQs"); }}>FAQs</a>
+</div>
+
 
           <div className="footer-col newsletter">
             <b>Stay in the loop</b>
+            {subscribeMessage && (
+  <p role="status">{subscribeMessage}</p>
+)}
             <p>New finds and little offers, now and then.</p>
             <div>
               <input placeholder="Your email address" aria-label="Your email address" />
-              <button aria-label="Subscribe"><ArrowUpRight size={17} /></button>
+              
+<button
+  aria-label="Subscribe"
+  onClick={() => setSubscribeMessage("Thanks for your interest! Subscription is demo-only.")}
+>
+  <ArrowUpRight size={17} />
+</button>
+
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
           <div className="page-container">
-            <span>© 2026 SAUMÉ Store · Mini MERN learning project</span>
+            <span>� 2026 SAUM� Store � Mini MERN learning project</span>
             <span>Made with care, for everyday life.</span>
           </div>
         </div>
@@ -766,7 +779,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
                           }));
                         }}
                       >
-                        Checkout · {money(total)} <ArrowUpRight size={17} />
+                        Checkout � {money(total)} <ArrowUpRight size={17} />
                       </button>
                       <button className="continue-button" onClick={() => setCartOpen(false)}>
                         Continue browsing
@@ -847,7 +860,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
                           Back
                         </button>
                         <button type="submit" className="checkout-button" disabled={checkoutLoading}>
-                          {checkoutLoading ? "Placing order…" : `Place COD order · ${money(total)}`}
+                          {checkoutLoading ? "Placing order�" : `Place COD order � ${money(total)}`}
                         </button>
                       </div>
                     </form>
@@ -857,7 +870,45 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
             )}
           </aside>
         </div>
+      
+      )}
+
+      {footerInfo && (
+        <div
+          className="drawer-backdrop"
+          onClick={() => setFooterInfo("")}
+        >
+          <div
+            className="cart-drawer footer-info-panel"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <button
+              type="button"
+              onClick={() => setFooterInfo("")}
+              aria-label="Close"
+            >
+              ?
+            </button>
+
+            <h2>{footerInfo}</h2>
+
+            {footerInfo === "Contact us" && (
+              <p>For help, please contact our store support.</p>
+            )}
+
+            {footerInfo === "Shipping & returns" && (
+              <p>Shipping and returns information is for demonstration only.</p>
+            )}
+
+            {footerInfo === "FAQs" && (
+              <p>This is a demo store. Please contact store support for help.</p>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
 }
+
