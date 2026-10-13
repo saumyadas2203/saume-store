@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useMemo, useState } from "react";
 import {
   Search,
@@ -60,6 +60,7 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [subscribeMessage, setSubscribeMessage] = useState("");
   const [footerInfo, setFooterInfo] = useState("");
   const [checkoutOpen, setCheckoutOpen] = useState(false);
