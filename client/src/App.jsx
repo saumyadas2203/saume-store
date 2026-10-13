@@ -265,13 +265,13 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
     setShippingAddress((current) => ({ ...current, [name]: value }));
   }
 
-  async function placeCodOrder(event) {
+  function placeCodOrder(event) {
     event.preventDefault();
     setCheckoutMessage("");
     setOrderConfirmation("");
 
     if (!auth.token) {
-      setCheckoutMessage("Please log in again before placing your order.");
+      setCheckoutMessage("Please log in again before continuing.");
       return;
     }
 
@@ -281,57 +281,14 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
     }
 
     setCheckoutLoading(true);
-    try {
-      const response = await fetch(`${API}/orders`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
-        },
-        body: JSON.stringify({
-          items: cart.map((item) => ({
-            product: item._id,
-            quantity: item.quantity,
-          })),
-          shippingAddress,
-        }),
-      });
-
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(data.message || "Could not place your order. Please check your details and try again.");
-      }
-
-      const orderNumber = data.order?._id || data._id || data.orderId;
-      setOrderConfirmation(
-        orderNumber
-          ? `Order placed successfully! Order ID: ${orderNumber}. Payment method: Cash on Delivery.`
-          : "Order placed successfully! Payment method: Cash on Delivery."
-      );
-      setCart([]);
-      setCheckoutOpen(false);
-      setCheckoutMessage("");
-      setShippingAddress({
-        fullName: auth.user?.name || "",
-        phone: "",
-        address: "",
-        city: "",
-        state: "",
-        pincode: "",
-      });
-      setProducts((current) =>
-        current.map((product) => {
-          const orderedItem = cart.find((item) => item._id === product._id);
-          return orderedItem
-            ? { ...product, stock: Math.max(0, Number(product.stock) - orderedItem.quantity) }
-            : product;
-        })
-      );
-    } catch (err) {
-      setCheckoutMessage(err.message || "Something went wrong while placing your order.");
-    } finally {
-      setCheckoutLoading(false);
-    }
+    const demoConfirmation =
+      "Order Placed Successfully! (Demo only — no real order was created. Your cart and stock are unchanged.)";
+    setOrderConfirmation(demoConfirmation);
+    window.alert(demoConfirmation);
+    setCheckoutOpen(false);
+    setCartOpen(false);
+    setCheckoutMessage("");
+    setCheckoutLoading(false);
   }
 
   if (!auth.token) {
