@@ -884,28 +884,59 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
+            aria-label={footerInfo}
           >
-            <button
-              type="button"
-              onClick={() => setFooterInfo("")}
-              aria-label="Close"
-            >
-              ?
-            </button>
+            <div className="drawer-heading">
+              <h2>{footerInfo}</h2>
+              <button
+                type="button"
+                className="icon-button"
+                onClick={() => setFooterInfo("")}
+                aria-label="Close popup"
+              >
+                <X size={20} />
+              </button>
+            </div>
 
-            <h2>{footerInfo}</h2>
+            <div className="footer-info-content">
+              {footerInfo === "Contact us" && (
+                <div>
+                  <p>Have a question or need help? We're happy to assist you.</p>
+                  <p>
+                    <strong>Email:</strong>{" "}
+                    <a href="mailto:saumyadas2203@gmail.com">
+                      saumyadas2203@gmail.com
+                    </a>
+                  </p>
+                </div>
+              )}
 
-            {footerInfo === "Contact us" && (
-              <p>For help, please contact our store support.</p>
-            )}
+              {footerInfo === "Shipping & returns" && (
+                <div>
+                  <p>We aim to make your shopping experience smooth and convenient.</p>
+                  <p>
+                    Shipping and returns information is provided for demonstration
+                    purposes on this demo store.
+                  </p>
+                </div>
+              )}
 
-            {footerInfo === "Shipping & returns" && (
-              <p>Shipping and returns information is for demonstration only.</p>
-            )}
-
-            {footerInfo === "FAQs" && (
-              <p>This is a demo store. Please contact store support for help.</p>
-            )}
+              {footerInfo === "FAQs" && (
+                <div>
+                  <p><strong>Is this a real store?</strong></p>
+                  <p>This is a demonstration e-commerce website.</p>
+                  <p><strong>How can I contact support?</strong></p>
+                  <p>
+                    Email us at{" "}
+                    <a href="mailto:saumyadas2203@gmail.com">
+                      saumyadas2203@gmail.com
+                    </a>
+                  </p>
+                  <p><strong>Can I place a real order?</strong></p>
+                  <p>Checkout is for demonstration purposes only.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
