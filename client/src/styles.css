@@ -2956,3 +2956,132 @@ footer .footer-col a[href="#story"] {
   }
 }
 /* ===== END SAUME RESPONSIVE MOBILE POLISH ===== */
+
+
+
+
+/* ===== SAUME MOBILE HEADER CORRECTION ===== */
+@media (max-width: 700px) {
+  .header-main {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    gap: 12px 6px !important;
+    padding: 18px 0 !important;
+  }
+
+  .header-main > .brand {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    font-size: clamp(16px, 4vw, 23px) !important;
+    white-space: nowrap !important;
+  }
+
+  .header-main > .brand .brand-mark {
+    flex-shrink: 0 !important;
+  }
+
+  .header-main > .header-actions {
+    display: contents !important;
+  }
+
+  .header-actions > .account-link:first-child {
+    grid-column: 3 / 5 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+    padding: 6px !important;
+    font-size: clamp(11px, 2.8vw, 15px) !important;
+    white-space: normal !important;
+  }
+
+  .header-main > .header-search {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-actions > .account-link:not(:first-child),
+  .header-actions > .cart-button {
+    grid-row: 3 !important;
+    grid-column: span 1 !important;
+    justify-self: stretch !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px !important;
+    min-width: 0 !important;
+    padding: 10px 3px !important;
+    font-size: clamp(10px, 2.6vw, 13px) !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-actions > .account-link:not(:first-child) svg,
+  .header-actions > .cart-button svg {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .main-nav .nav-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    overflow: visible !important;
+  }
+
+  .main-nav .category-menu {
+    align-self: center !important;
+    width: min(100%, 320px) !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .main-nav .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  .main-nav .nav-links a {
+    flex: 0 1 auto !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+  }
+
+  .main-nav .nav-promo {
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-main {
+    column-gap: 3px !important;
+  }
+
+  .header-main > .brand {
+    font-size: 15px !important;
+  }
+
+  .header-actions > .account-link:not(:first-child),
+  .header-actions > .cart-button {
+    font-size: 10px !important;
+    padding: 9px 1px !important;
+  }
+}
+/* ===== END MOBILE HEADER CORRECTION ===== */
