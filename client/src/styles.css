@@ -2570,3 +2570,24 @@ footer .footer-col a[href="#story"] {
     margin: 0 !important;
   }
 }
+
+/* FINAL mobile action row alignment */
+@media (max-width: 600px) {
+  .header-main {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    column-gap: 10px !important;
+  }
+
+  .header-actions > .account-link:not(:first-child),
+  .header-actions > .cart-button {
+    grid-row: 3 !important;
+    justify-self: stretch !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 10px 5px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+}
