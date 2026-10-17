@@ -2205,3 +2205,267 @@ select:focus-visible {
   color: #f5f5f5;
   line-height: 1.7;
 }
+
+
+/* ===== SAUMÉ STORE — FOUNDER STORY ===== */
+#story { scroll-margin-top: 28px; }
+.story-section-premium {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, .82fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 68px);
+  padding: clamp(28px, 5vw, 64px);
+  margin: 28px 0 36px;
+  text-align: left;
+  background: radial-gradient(ellipse at 18% 0%, #302719 0%, #17140f 44%, #101010 100%);
+  border: 1px solid #554528;
+  border-radius: 22px;
+  overflow: hidden;
+}
+.story-section-premium .story-copy { min-width: 0; }
+.story-section-premium .eyebrow { margin: 0 0 16px; letter-spacing: 2px; font-size: 10px; }
+.story-section-premium h2 { margin: 0 0 20px; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.12; }
+.story-section-premium .story-lead { color: #f1e6ce; font-size: 16px; line-height: 1.75; margin: 0 0 12px; }
+.story-section-premium .story-body { color: #c6bdac; font-size: 13px; line-height: 1.9; margin: 0 0 14px; max-width: 560px; }
+.story-section-premium .story-signoff { color: #dfc078; font-size: 12px; line-height: 1.8; font-style: italic; margin: 0 0 24px; }
+.story-section-premium .story-cta { display: inline-flex; align-items: center; gap: 8px; }
+.story-founder-card { min-width: 0; padding: 10px; border: 1px solid #59492b; border-radius: 18px; background: linear-gradient(145deg, #211c12, #111); box-shadow: 0 18px 45px #0006; }
+.story-founder-image-wrap { position: relative; overflow: hidden; border-radius: 12px; background: #17130c; aspect-ratio: 4 / 5; }
+.story-founder-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+.story-photo-caption { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 12px; border: 1px solid #dfc07866; border-radius: 999px; background: #0b0b0bd9; color: #f1dca6; font-size: 9px; letter-spacing: 1.2px; text-align: center; backdrop-filter: blur(8px); }
+.story-founder-note { display: flex; align-items: flex-start; gap: 12px; padding: 17px 8px 8px; }
+.story-founder-heart { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border: 1px solid #5b492a; border-radius: 50%; color: #dfc078; background: #2a2112; }
+.story-founder-note strong { display: block; color: #f4ead0; font: 600 16px Georgia, serif; margin: 1px 0 5px; }
+.story-founder-note p { margin: 0; color: #bcb3a2; font-size: 11px; line-height: 1.7; }
+@media (max-width: 760px) {
+  .story-section-premium { grid-template-columns: 1fr; gap: 26px; padding: 27px 20px; margin-top: 20px; }
+  .story-section-premium h2 { font-size: clamp(33px, 9vw, 44px); }
+  .story-section-premium .story-lead { font-size: 14px; }
+  .story-founder-card { width: min(100%, 390px); justify-self: center; box-sizing: border-box; }
+  .story-founder-image-wrap { aspect-ratio: 4 / 4.5; }
+}
+
+
+/* ===== FIX: reliable in-page navigation to the Our Story section ===== */
+html {
+  scroll-padding-top: 24px;
+}
+#story {
+  scroll-margin-top: 24px;
+  position: relative;
+  z-index: 0;
+}
+.story-section[id="story"] {
+  scroll-margin-top: 24px;
+}
+
+
+
+
+/* Fix Our story footer link and scroll target */
+#story {
+  scroll-margin-top: 20px;
+}
+
+footer .footer-col a[href="#story"] {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+/* ===== SAUME PREMIUM STORY POLISH ===== */
+.story-photo-frame {
+  border: 1px solid rgba(211, 173, 103, 0.48) !important;
+  border-radius: 3px !important;
+  padding: 10px !important;
+  background: linear-gradient(145deg, rgba(211,173,103,.08), rgba(0,0,0,.12)) !important;
+  box-shadow: 0 24px 65px rgba(0,0,0,.32), 0 0 24px rgba(211,173,103,.06) !important;
+}
+
+.story-founder-photo {
+  border-radius: 2px !important;
+  display: block;
+  transition: transform .7s ease, filter .7s ease;
+}
+
+.story-photo-frame:hover .story-founder-photo {
+  transform: scale(1.012);
+  filter: saturate(1.04);
+}
+
+.story-copy {
+  max-width: 570px;
+}
+
+.story-copy h2 {
+  letter-spacing: -1.5px;
+  line-height: 1.08;
+  margin-bottom: 18px;
+  text-shadow: 0 3px 22px rgba(211,173,103,.08);
+}
+
+.story-copy p {
+  line-height: 1.85;
+  margin-bottom: 17px;
+  color: rgba(248, 241, 228, .88);
+}
+
+.story-copy .story-subtitle {
+  color: #d8b879;
+  letter-spacing: .35px;
+  margin-bottom: 24px;
+}
+
+.story-copy .brand-signature-line {
+  color: #e4c994;
+  line-height: 1.7;
+  margin-top: 27px;
+  margin-bottom: 30px;
+}
+
+.story-copy .signature-block {
+  border-left: 1px solid rgba(211,173,103,.48);
+  padding: 15px 0 12px 22px;
+  margin-top: 24px;
+}
+
+.story-copy .signature-name {
+  text-shadow: 0 0 24px rgba(211,173,103,.12);
+}
+
+#heart-rain-container {
+  pointer-events: none;
+  opacity: .72;
+}
+
+@media (max-width: 768px) {
+  .story-copy {
+    max-width: 100%;
+  }
+
+  .story-photo-frame {
+    padding: 7px !important;
+  }
+
+  .story-copy h2 {
+    letter-spacing: -0.7px;
+  }
+
+  .story-copy p {
+    line-height: 1.75;
+    margin-bottom: 15px;
+  }
+
+  .story-copy .signature-block {
+    padding-left: 16px;
+  }
+}
+/* ===== END PREMIUM STORY POLISH ===== */
+
+
+/* ===== SAUME MOBILE RESPONSIVE POLISH ===== */
+@media (max-width: 700px) {
+  html, body, #root {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .page-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  .header-main {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .product-card {
+    min-width: 0;
+    border-radius: 14px !important;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 180px !important;
+    object-fit: cover;
+  }
+
+  .product-card h3 {
+    font-size: 16px !important;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .product-card p {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+
+  .product-card button {
+    max-width: 100%;
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
+
+  .footer-col,
+  .footer-brand-col,
+  .newsletter {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-bottom .page-container {
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  input, select, textarea, button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .page-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .product-grid {
+    gap: 9px !important;
+  }
+
+  .product-card img {
+    height: 145px !important;
+  }
+
+  .product-card h3 {
+    font-size: 14px !important;
+  }
+
+  .footer-main {
+    gap: 20px 10px;
+  }
+}
+/* ===== END SAUME MOBILE POLISH ===== */
+
