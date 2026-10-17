@@ -309,7 +309,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
     <div className="app-shell">
       <div className="top-strip">
         <div className="page-container top-strip-inner">
-          <span>Welcome to SAUMÉ Store — everyday essentials, thoughtfully picked.</span>
+          <span className="welcome-copy"><strong>Welcome to SAUMÉ Store</strong><small>EVERYDAY ESSENTIALS, THOUGHTFULLY PICKED.</small></span>
           <div>
             <a href="/story.html">About us</a>
             <span className="top-divider">|</span>
@@ -595,7 +595,7 @@ const categories = ["All", "Fashion", "Home", "Accessories", "Electronics"];
           ) : products.length === 0 ? (
             <div className="state-message">No products found. Try another search.</div>
           ) : (
-            <div className="product-grid">
+            <div className="product-grid product-slider">
               {products.map((product, index) => (
                 <article className="product-card" key={product._id}>
                   <div className="product-image-wrap">
