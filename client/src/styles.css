@@ -2469,3 +2469,113 @@ footer .footer-col a[href="#story"] {
 }
 /* ===== END SAUME MOBILE POLISH ===== */
 
+
+/* ===== SAUME FINAL MOBILE LAYOUT FIX ===== */
+@media (max-width: 700px) {
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .page-container {
+    width: auto !important;
+    max-width: 100% !important;
+    margin-left: 14px !important;
+    margin-right: 14px !important;
+    box-sizing: border-box;
+  }
+
+  .header-main {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-main > .brand {
+    align-self: flex-start;
+    max-width: 100%;
+    font-size: clamp(19px, 5vw, 24px) !important;
+    white-space: nowrap;
+  }
+
+  .header-main > .header-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header-actions > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .header-main > .header-search {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    order: initial !important;
+  }
+
+  .header-actions button,
+  .header-actions a {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+
+  .nav, .navbar, .navigation, .nav-links {
+    max-width: 100%;
+  }
+
+  .product-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 12px !important;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .product-grid .product-card {
+    flex: 0 0 78% !important;
+    min-width: 0 !important;
+    scroll-snap-align: start;
+  }
+
+  .product-card img,
+  .product-image-wrap > img {
+    max-width: 100%;
+  }
+
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px 14px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-actions button,
+  .header-actions a {
+    font-size: 12px !important;
+    padding: 9px 10px !important;
+  }
+
+  .header-main > .brand {
+    font-size: 18px !important;
+  }
+
+  .product-grid .product-card {
+    flex-basis: 84% !important;
+  }
+}
+/* ===== END FINAL MOBILE FIX ===== */

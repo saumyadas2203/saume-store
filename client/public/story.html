@@ -1211,3 +1211,35 @@ body {
 
 
 
+
+/* ===== STORY PAGE: PHOTO ABOVE TEXT ON MOBILE ===== */
+@media (max-width: 768px) {
+  .hero#story {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 26px !important;
+    min-height: auto !important;
+  }
+
+  .hero#story .story-photo-frame {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero#story .story-copy {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .hero#story .story-founder-photo {
+    height: min(58vh, 440px) !important;
+    object-fit: cover !important;
+    object-position: center 42% !important;
+  }
+}
+/* ===== END STORY MOBILE ORDER ===== */
