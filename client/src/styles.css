@@ -2591,3 +2591,10 @@ footer .footer-col a[href="#story"] {
     overflow-wrap: normal !important;
   }
 }
+
+/* Hide decorative hero slider bars on mobile */
+@media (max-width: 700px) {
+  .hero-banner .hero-pagination {
+    display: none !important;
+  }
+}
