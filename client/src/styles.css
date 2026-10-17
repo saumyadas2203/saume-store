@@ -2598,3 +2598,34 @@ footer .footer-col a[href="#story"] {
     display: none !important;
   }
 }
+
+/* Final welcome banner and hero pagination fix */
+.top-strip-inner > .welcome-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  text-align: left !important;
+  position: relative;
+  z-index: 1;
+}
+
+.top-strip-inner > .welcome-copy strong {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(16px, 1.5vw, 21px) !important;
+  line-height: 1.25 !important;
+  color: #f6e8bd !important;
+}
+
+.top-strip-inner > .welcome-copy small {
+  font-size: 10px !important;
+  letter-spacing: 1.5px !important;
+  line-height: 1.5 !important;
+  color: #e5cf91 !important;
+}
+
+.hero-banner .hero-pagination {
+  display: none !important;
+}
+
