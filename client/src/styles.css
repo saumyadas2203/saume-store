@@ -2544,3 +2544,29 @@ footer .footer-col a[href="#story"] {
 /* ===== END SAUME MOBILE FINAL ===== */
 
 
+
+/* Mobile action buttons: centered row with equal gaps */
+@media (max-width: 600px) {
+  .header-actions {
+    display: contents !important;
+  }
+
+  .header-actions > .account-link:not(:first-child),
+  .header-actions > .cart-button {
+    grid-row: 3 !important;
+    justify-self: center !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 10px 14px !important;
+    white-space: nowrap !important;
+  }
+
+  .header-main {
+    column-gap: 10px !important;
+  }
+
+  .header-actions > .account-link:not(:first-child) {
+    margin: 0 !important;
+  }
+}
