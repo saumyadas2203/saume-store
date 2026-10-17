@@ -2783,3 +2783,176 @@ footer .footer-col a[href="#story"] {
   }
 }
 /* ===== END FINAL MOBILE FIX ===== */
+
+
+/* ===== SAUME RESPONSIVE MOBILE POLISH ===== */
+@media (max-width: 700px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .page-container {
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header: logo and account */
+  .header-main {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+    align-items: center !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .header-main > .brand {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    font-size: 19px !important;
+  }
+
+  .header-main > .header-search {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-main > .header-actions {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+  }
+
+  .header-actions > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .header-actions .account-link span {
+    overflow-wrap: anywhere;
+  }
+
+  /* Navigation: wrap instead of sliding */
+  .main-nav .nav-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    overflow: visible !important;
+  }
+
+  .main-nav .category-menu {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .main-nav .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 14px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  .main-nav .nav-links a {
+    flex: 0 1 auto !important;
+    white-space: normal !important;
+    font-size: 13px !important;
+  }
+
+  .main-nav .nav-promo {
+    display: none !important;
+  }
+
+  /* Hero section */
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .hero-banner {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-copy {
+    padding: 24px 18px !important;
+  }
+
+  /* Two product cards per row */
+  .product-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  .product-grid .product-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-basis: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-card img,
+  .product-image-wrap img {
+    max-width: 100% !important;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Footer */
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .page-container {
+    width: calc(100% - 16px) !important;
+  }
+
+  .header-main {
+    gap: 6px !important;
+  }
+
+  .header-main > .brand {
+    font-size: 16px !important;
+  }
+
+  .header-actions {
+    gap: 4px !important;
+  }
+
+  .header-actions > * {
+    padding: 6px !important;
+    font-size: 11px !important;
+  }
+
+  .product-grid {
+    gap: 8px !important;
+  }
+}
+/* ===== END SAUME RESPONSIVE MOBILE POLISH ===== */
