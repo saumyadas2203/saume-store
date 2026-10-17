@@ -2487,12 +2487,33 @@ footer .footer-col a[href="#story"] {
   }
 
   .header-main {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 14px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 12px 8px !important;
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .header-main > .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .header-main > .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: 100%;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    overflow-x: auto;
+  }
+
+  .header-main > .header-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   .header-main > .brand {
